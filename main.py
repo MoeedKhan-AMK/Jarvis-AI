@@ -6,29 +6,30 @@ import time        #time is a standard library in Python used for time-related f
 recognizer = sr.Recognizer()            #Recognizer is an instance of the Recognizer class from the speech_recognition library
 engine = pyttsx3.init()            #engine is an instance of the pyttsx3 class for text-to-speech conversion
 
+
 def speak(text):
-    engine.say(text)
-    engine.runAndWait()
+        engine.say(text)
+        engine.runAndWait()
 
 if __name__ == "__main__":
-    speak("How may I be of service?")
-    time.sleep(1)
+        speak("Initializing Jarvis")
+        # time.sleep(1)
+        while True:
+            # obtain audio from the microphone
+            r = sr.Recognizer()
+            with sr.Microphone(device_index=0) as source:
+                print("Listening...")
+                r.adjust_for_ambient_noise(source, duration=0.5)
+                audio = r.listen(source, timeout=5, phrase_time_limit=5)
 
-    # obtain audio from the microphone
-    r = sr.Recognizer()
-    with sr.Microphone(device_index=0) as source:
-        print("Listening...")
-        r.adjust_for_ambient_noise(source, duration=0.5)
-        audio = r.listen(source, timeout=5, phrase_time_limit=5)
-
-    print("Recognizing...")
-    # recognize speech using Google Speech Recognition
-    try:
-        command = r.recognize_google(audio)
-        print(command)
-    except sr.UnknownValueError:
-        print("Google Speech Recognition could not understand audio")
-    except sr.RequestError as e:
-        print("Could not request results from Google Speech Recognition service; {0}".format(e))
+            print("Recognizing...")
+            # recognize speech using Google Speech Recognition
+            try:
+                command = r.recognize_google(audio)
+                print(command)
+            except sr.UnknownValueError:
+                print("Google Speech Recognition could not understand audio")
+            except sr.RequestError as e:
+                print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
 
