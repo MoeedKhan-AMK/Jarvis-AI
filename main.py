@@ -11,19 +11,39 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+def process_command(c):
+    print(c)
+
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
+    time.sleep(2) # Simulate initialization delay
 
     while True:
         r = sr.Recognizer()
+
+        with sr.Microphone(device_index=0) as source:
+            print("Listening for 'Jarvis'...")
+            r.adjust_for_ambient_noise(source)
+            audio = r.listen(source)
+
         print("Recognizing...")
 
         try:
-            with sr.Microphone() as source:
-                print("Listening...")
-                audio = r.listen(source)
             command = r.recognize_google(audio)
-            print(command)
+            if(command.lower() == "jarvis"):
+                speak("On your service sir!")
+                time.sleep(0.5) # Short delay before next command
+                
+                
+                with sr.Microphone(device_index=0) as source:
+                    print("Jarvis Activated!")
+                    audio = r.listen(source)
+                    command = r.recognize_google(audio)
+                    
+                    
+                    process_command(command)
+
+
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         except sr.RequestError as e:
