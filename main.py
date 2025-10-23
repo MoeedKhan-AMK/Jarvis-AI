@@ -16,7 +16,7 @@ def process_command(c):
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
-    time.sleep(2) # Simulate initialization delay
+    # time.sleep(2) # Simulate initialization delay
 
     while True:
         #Listen for wake word "Jarvis"
@@ -35,14 +35,10 @@ if __name__ == "__main__":
                 # time.sleep(0.5) # Short delay before next command
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Active")
-                    # r.adjust_for_ambient_noise(source)
                     audio = r.listen(source)
-
+                    command = r.recognize_google(audio)
+                
                 process_command(command)
-            else:
-                print("Wake word not detected!...")
-
-
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         # except sr.RequestError as e:
