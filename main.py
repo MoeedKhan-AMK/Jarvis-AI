@@ -14,7 +14,7 @@ def speak(text):
 def process_command(c):
     if "open google" in c.lower():
         webbrowser.open("https://www.google.com")
-        speak("Opening Google")
+        print("Opening Google in your browser...")
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
