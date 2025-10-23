@@ -31,7 +31,7 @@ if __name__ == "__main__":
             command = r.recognize_google(audio)
             
             if(command.lower() == "jarvis"):
-                speak("On your service sir!")
+                speak(command)
                 # time.sleep(0.5) # Short delay before next command
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Active")
