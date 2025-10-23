@@ -12,9 +12,7 @@ def speak(text):
     engine.runAndWait()
 
 def process_command(c):
-    if "open google" in c.lower():
-        webbrowser.open("https://www.google.com")
-        speak("Opening Google")
+    print(c)
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
