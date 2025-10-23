@@ -26,8 +26,9 @@ if __name__ == "__main__":
 
         try:
             with sr.Microphone(device_index=0) as source:
-                print("Listening for wake word...")
+                print("Listening for wake word to active Jarvis...")
                 audio = r.listen(source)
+                r.adjust_for_ambient_noise(source, duration=0.5)
             command = r.recognize_google(audio)
             
             if(command.lower() == "jarvis"):
@@ -36,12 +37,13 @@ if __name__ == "__main__":
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
                 time.sleep(0.5)
                 
-                speak("On your service sir!")
+                print("On your service sir!")
                 time.sleep(0.5) # Short delay before next command
                
                 with sr.Microphone(device_index=0) as source:
-                    print("Jarvis Active")
+                    print("Jarvis Active....Listening for your command.")
                     audio = r.listen(source)
+                    r.adjust_for_ambient_noise(source, duration=0.5)
                     command = r.recognize_google(audio)
                 
                 process_command(command)
