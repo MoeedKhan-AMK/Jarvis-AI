@@ -1,0 +1,18 @@
+biography = {
+    "one": "https://youtu.be/eTUwcgiGY08",
+    "two" : "https://youtu.be/6enKNJM-2bo",
+    "three" : "https://youtu.be/FY23yHBMlCI",
+    "four" : "https://youtu.be/7HshKMNAOIw",
+    "five" : "https://youtu.be/2_EmGyrMLVo",
+    "six" : "https://youtu.be/RAGCCay4BHg",
+    "seven" : "https://youtu.be/AUfNifapIW4",
+    "eight" : "https://youtu.be/jus8ijlT_Uc",
+    "nine" : "https://youtu.be/eFCGmgFWxGw",
+    "ten" : "https://youtu.be/7fkhwEJ0Ueg",
+    "eleven" : "https://youtu.be/aPxtbZ_fvBU",
+    "twelve" : "https://youtu.be/tQ-XsXsULII",
+    "thirteen" : "https://youtu.be/czRBJgGTZhg",
+    "fourteen" : "https://youtu.be/XADhKioLSnk",
+    "fifteen" : "https://youtu.be/6ve-T-FJ-Ck",
+    "sixteen" : "https://youtu.be/eTUwcgiGY08",
+}
