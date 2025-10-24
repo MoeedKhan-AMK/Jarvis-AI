@@ -2,7 +2,7 @@ import speech_recognition as sr
 import webbrowser
 import pyttsx3
 import time
-
+import quranlibrary
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 
@@ -27,6 +27,12 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
+    elif "play quran juz " in c.lower():
+        for juz in quranlibrary.quran:
+            if juz in c.lower():
+                webbrowser.open(quranlibrary.quran[juz])
+                print(f"Playing {juz} of Quran...")
+                break
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
