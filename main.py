@@ -18,19 +18,19 @@ def process_command(c):
     elif "open youtube" in c.lower():
         webbrowser.open("https://www.youtube.com")
         print("Opening YouTube in your browser...")
-    elif "open X" in c.lower():
+    elif "open x" in c.lower():
         webbrowser.open("https://x.com")
         print("Opening X in your browser...")
-    elif "open LinkedIn" in c.lower():
+    elif "open linkedin" in c.lower():
         webbrowser.open("https://www.linkedin.com")
         print("Opening LinkedIn in your browser...")
-    elif "open GitHub" in c.lower():
+    elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
-    # time.sleep(2) # Simulate initialization delay
+    time.sleep(2) # Simulate initialization delay
 
     while True:
         #Listen for wake word "Jarvis"
@@ -49,10 +49,10 @@ if __name__ == "__main__":
                 speak("Wake word detected.")
                 
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
-                # time.sleep(0.5)
+                time.sleep(0.5)
                 
                 speak("On your service sir!")
-                # time.sleep(0.5) # Short delay before next command
+                time.sleep(0.5) # Short delay before next command
                
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Active....Listening for your command.")
