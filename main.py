@@ -19,13 +19,13 @@ def process_command(c):
         webbrowser.open("https://www.youtube.com")
         print("Opening YouTube in your browser...")
     elif "open X" in c.lower():
-        webbrowser.open("https://www.X.com")
+        webbrowser.open("https://x.com")
         print("Opening X in your browser...")
     elif "open LinkedIn" in c.lower():
         webbrowser.open("https://www.linkedin.com")
         print("Opening LinkedIn in your browser...")
     elif "open GitHub" in c.lower():
-        webbrowser.open("https://www.github.com")
+        webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
 
 if __name__ == "__main__":
@@ -49,10 +49,10 @@ if __name__ == "__main__":
                 speak("Wake word detected.")
                 
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
-                time.sleep(0.5)
+                # time.sleep(0.5)
                 
                 speak("On your service sir!")
-                time.sleep(0.5) # Short delay before next command
+                # time.sleep(0.5) # Short delay before next command
                
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Active....Listening for your command.")
