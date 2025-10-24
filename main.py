@@ -3,6 +3,7 @@ import webbrowser
 import pyttsx3
 import time
 import quranlibrary
+
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
 
@@ -27,13 +28,12 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
-    elif "play quran juz " in c.lower():
-        for juz in quranlibrary.quran:
-            if juz in c.lower():
-                webbrowser.open(quranlibrary.quran[juz])
-                print(f"Playing {juz} of Quran...")
-                break
-
+    elif "play" in c.lower():
+        juz = c.lower().split(" ")[1]
+        link = quranlibrary.quran[juz]
+        webbrowser.open(link)
+        print(f"Playing {juz} from Quran...")
+                
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
     time.sleep(2) # Simulate initialization delay
