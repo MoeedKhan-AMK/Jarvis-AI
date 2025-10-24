@@ -1,4 +1,4 @@
-quran = {
+part = {
     "juz 1" : "https://youtu.be/so-QHLIy2V0",
     # "juz 2" : "https://youtu.be/ttTGple9mxQ",
     # "juz 3" : "https://youtu.be/T_aopS_-sAs",

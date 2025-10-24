@@ -3,6 +3,7 @@ import webbrowser
 import pyttsx3
 import time
 import quranlibrary
+import library
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
@@ -28,6 +29,11 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
+    elif "play part" in c.lower():
+        juz = "juz 1"  # Default juz
+        if juz in quranlibrary.part:
+            webbrowser.open(quranlibrary.part[juz])
+            print(f"Playing {juz}...")
 
 
                 
@@ -55,7 +61,6 @@ if __name__ == "__main__":
                 # time.sleep(0.5)
                 
                 speak("On your service sir!")
-                time.sleep(0.5) # Short delay before next command
                
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Activated!")
