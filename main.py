@@ -28,11 +28,8 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
-    elif "play" in c.lower():
-        juz = c.lower().split(" ")[1]
-        link = quranlibrary.quran[juz]
-        webbrowser.open(link)
-        print(f"Playing {juz} from Quran...")
+
+
                 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
@@ -55,13 +52,13 @@ if __name__ == "__main__":
                 speak("Wake word detected.")
                 
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
-                time.sleep(0.5)
+                # time.sleep(0.5)
                 
                 speak("On your service sir!")
                 time.sleep(0.5) # Short delay before next command
                
                 with sr.Microphone(device_index=0) as source:
-                    print("Jarvis Active....Listening for your command.")
+                    print("Jarvis Activated!")
                     r.adjust_for_ambient_noise(source, duration=0.5)
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
