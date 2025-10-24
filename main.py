@@ -3,7 +3,7 @@ import webbrowser
 import pyttsx3
 import time
 import quranlibrary
-import library
+import seerah_library
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
@@ -29,13 +29,15 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
-    elif "play part" in c.lower():
-        juz = "juz 1"  # Default juz
-        if juz in quranlibrary.part:
-            webbrowser.open(quranlibrary.part[juz])
-            print(f"Playing {juz}...")
-
-
+    # elif "play part" in c.lower():
+    #     juz = "juz 1"  # Default juz
+    #     if juz in quranlibrary.part:
+    #         webbrowser.open(quranlibrary.part[juz])
+    #         print(f"Playing {juz}...")
+    elif "play biography" in c.lower():
+        bio = c.lower().split("play")[1]
+        link = seerah_library.biography[bio]
+        webbrowser.open(link)
                 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
