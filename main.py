@@ -15,6 +15,18 @@ def process_command(c):
     if "open google" in c.lower():
         webbrowser.open("https://www.google.com")
         print("Opening Google in your browser...")
+    elif "open youtube" in c.lower():
+        webbrowser.open("https://www.youtube.com")
+        print("Opening YouTube in your browser...")
+    elif "open X" in c.lower():
+        webbrowser.open("https://www.X.com")
+        print("Opening X in your browser...")
+    elif "open LinkedIn" in c.lower():
+        webbrowser.open("https://www.linkedin.com")
+        print("Opening LinkedIn in your browser...")
+    elif "open GitHub" in c.lower():
+        webbrowser.open("https://www.github.com")
+        print("Opening GitHub in your browser...")
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
