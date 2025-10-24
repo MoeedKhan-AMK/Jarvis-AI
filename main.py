@@ -2,12 +2,13 @@ import speech_recognition as sr
 import webbrowser
 import pyttsx3
 import time
+import requests
 import quranlibrary
 import seerah_library
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-
+new_api_key = "5ff34f7b2d9d4baab5584c46370d2676"
 
 def speak(text):
     engine.say(text)
@@ -29,16 +30,27 @@ def process_command(c):
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
         print("Opening GitHub in your browser...")
+        
+        # Quran recitation commands ON HOLD
     # elif "play part" in c.lower():
     #     juz = "juz 1"  # Default juz
     #     if juz in quranlibrary.part:
     #         webbrowser.open(quranlibrary.part[juz])
     #         print(f"Playing {juz}...")
-    elif "play biography" in c.lower():
-        bio = c.lower().split("play")[1]
-        link = seerah_library.biography[bio]
-        webbrowser.open(link)
-                
+        # Seeerah biography commands ON HOLD
+    # elif c.lower().startswith("play"):
+    #     biography = c.lower().split("")[1]
+    #     link = seerah_library.biography[biography]
+    #     webbrowser.open(link)
+    
+    elif "news" in c.lower().startswith("news"):
+        responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={new_api_key}")
+        speak("Fetching the latest headlines...")
+
+    for i, headline in enumerate(responses.json().get("articles", [])[:10], start=1):  # First 10 news only
+        print(f"{i}. {headline['title']}")
+        speak(headline['title'])
+
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
     time.sleep(2) # Simulate initialization delay
