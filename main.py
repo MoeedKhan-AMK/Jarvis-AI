@@ -1,21 +1,23 @@
-import speech_recognition as sr
-import webbrowser
-import pyttsx3
-import time
-import requests
-import random
-import quranlibrary
-import seerah_library
+import speech_recognition as sr     #speech recognition library
+import webbrowser           #to open web browser    
+import pyttsx3             #text to speech conversion
+import time              #to add delays in the program
+import requests           #to make API requests
+
+import quranlibrary          #importing quran library
+import seerah_library       #importing seerah library
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-new_api_key = "5ff34f7b2d9d4baab5584c46370d2676"
+new_api_key = "5ff34f7b2d9d4baab5584c46370d2676"        #News API key
 
-def speak(text):
+def speak(text):        #function to make the assistant speak
     engine.say(text)
     engine.runAndWait()
 
-def process_command(c):
+def process_command(c):     #function to process user commands
+    
+    #Opening websites commands
     if "open google" in c.lower():
         webbrowser.open("https://www.google.com")
         print("Opening Google in your browser...")
@@ -44,6 +46,7 @@ def process_command(c):
     #     link = seerah_library.biography[biography]
     #     webbrowser.open(link)
     
+    #News fetching command
     elif "news" in c.lower():
         responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&&apiKey={new_api_key}")  #category can be added using category=sports
         speak("Fetching the latest headlines...")
@@ -52,6 +55,7 @@ def process_command(c):
             print(f"{i}. {headline['title']}")
             speak(headline['title'])
 
+# Main program loop
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
     time.sleep(2) # Simulate initialization delay
@@ -59,9 +63,10 @@ if __name__ == "__main__":
     while True:
         #Listen for wake word "Jarvis"
         r = sr.Recognizer()
-
+        
         print("Recognizing...")
-
+        
+        #USE THE APPROPRIATE MICROPHONE DEVICE INDEX
         try:
             with sr.Microphone(device_index=0) as source:
                 print("Listening for wake word to active Jarvis...")
