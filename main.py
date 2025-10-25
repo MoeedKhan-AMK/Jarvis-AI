@@ -3,6 +3,7 @@ import webbrowser
 import pyttsx3
 import time
 import requests
+import random
 import quranlibrary
 import seerah_library
 
@@ -44,7 +45,7 @@ def process_command(c):
     #     webbrowser.open(link)
     
     elif "news" in c.lower():
-        responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={new_api_key}")
+        responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&&apiKey={new_api_key}")  #category can be added using category=sports
         speak("Fetching the latest headlines...")
 
         for i, headline in enumerate(responses.json().get("articles"), start=1):  # First 10 news only
