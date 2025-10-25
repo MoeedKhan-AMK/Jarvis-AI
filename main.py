@@ -46,16 +46,10 @@ def process_command(c):
     elif "news" in c.lower():
         responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&apiKey={new_api_key}")
         speak("Fetching the latest headlines...")
-        if responses.status_code == 200:
-            data = responses.json()
-            
-            articles = data.get("articles", [])
-            
-            for i, article in articles:
-                print(article['title'])
-        # for i, headline in enumerate(responses.json().get("articles", [])[:10], start=1):  # First 10 news only
-        #     print(f"{i}. {headline['title']}")
-        #     speak(headline['title'])
+
+        for i, headline in enumerate(responses.json().get("articles"), start=1):  # First 10 news only
+            print(f"{i}. {headline['title']}")
+            speak(headline['title'])
 
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
