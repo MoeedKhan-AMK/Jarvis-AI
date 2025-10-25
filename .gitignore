@@ -1,0 +1,6 @@
+# Ignore environment file and secret keys
+.env
+*.env
+*.key
+apikey.txt
+secret.txt
