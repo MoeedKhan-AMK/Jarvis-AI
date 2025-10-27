@@ -4,6 +4,7 @@ import pyttsx3             #text to speech conversion
 import time              #to add delays in the program
 import requests           #to make API requests
 
+from client import ask_Jarvis   #importing ask_Jarvis function from client.py
 import quranlibrary          #importing quran library
 import seerah_library       #importing seerah library
 
@@ -15,6 +16,7 @@ def speak(text):        #function to make the assistant speak
     engine.say(text)
     engine.runAndWait()
 
+    
 def process_command(c):     #function to process user commands
     
     #Opening websites commands
@@ -57,7 +59,10 @@ def process_command(c):     #function to process user commands
             
     else:
         #let LLM API handle commands
-        pass
+        response = ask_Jarvis(c)
+        print("User: ", command)
+        print("Jarvis: ", response)
+        
         
 # Main program loop
 if __name__ == "__main__":
