@@ -1,6 +1,9 @@
+import os
 import speech_recognition as sr     #speech recognition library
 import webbrowser           #to open web browser    
-import pyttsx3             #text to speech conversion
+# import pyttsx3             #text to speech conversion
+from gtts import gTTS       #Google text to speech conversion
+from playsound import playsound  #to play sound
 import time              #to add delays in the program
 import requests           #to make API requests
 
@@ -9,12 +12,27 @@ import quranlibrary          #importing quran library
 import seerah_library       #importing seerah library
 
 recognizer = sr.Recognizer()
-engine = pyttsx3.init()
+# engine = pyttsx3.init()
 new_api_key = "5ff34f7b2d9d4baab5584c46370d2676"        #News API key
 
-def speak(text):        #function to make the assistant speak
-    engine.say(text)
-    engine.runAndWait()
+# def speak(text):        #function to make the assistant speak
+#     engine.say(text)
+#     engine.runAndWait()
+
+#google text to speech
+
+def speak(text):
+    # tts = gTTS(text)
+    # tts.save('text.mp3')
+    print("Jarvis: ", text)
+    tts = gTTS(text=text, lang='en')
+    
+    filename = f"voice_{int(time.time())}.mp3"  # unique filename
+    
+    tts.save(filename)
+    playsound(filename)
+    
+    os.remove(filename)  # delete temp audio file after playing
 
     
 def process_command(c):     #function to process user commands
@@ -67,7 +85,6 @@ def process_command(c):     #function to process user commands
 # Main program loop
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
-    time.sleep(2) # Simulate initialization delay
 
     while True:
         #Listen for wake word "Jarvis"
@@ -78,7 +95,7 @@ if __name__ == "__main__":
         #USE THE APPROPRIATE MICROPHONE DEVICE INDEX
         try:
             with sr.Microphone(device_index=0) as source:
-                print("Listening for wake word to active Jarvis...")
+                speak("Listening for wake word to active Jarvis...")
                 r.adjust_for_ambient_noise(source, duration=0.5)
                 audio = r.listen(source)
                 command = r.recognize_google(audio)
