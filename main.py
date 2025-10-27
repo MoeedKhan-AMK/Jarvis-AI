@@ -54,7 +54,11 @@ def process_command(c):     #function to process user commands
         for i, headline in enumerate(responses.json().get("articles"), start=1):  # First 10 news only
             print(f"{i}. {headline['title']}")
             speak(headline['title'])
-
+            
+    else:
+        #let OpenAI handle commands
+        pass
+        
 # Main program loop
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
