@@ -4,3 +4,5 @@
 *.key
 apikey.txt
 secret.txt
+text.mp3
+voice_*.mp3
