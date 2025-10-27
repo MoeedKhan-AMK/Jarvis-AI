@@ -96,19 +96,20 @@ if __name__ == "__main__":
         #USE THE APPROPRIATE MICROPHONE DEVICE INDEX
         try:
             with sr.Microphone(device_index=0) as source:
-                speak("Listening for wake word to active Jarvis...")
+                speak("Say 'Jarvis'")
                 r.adjust_for_ambient_noise(source, duration=0.5)
                 audio = r.listen(source)
                 command = r.recognize_google(audio)
             
             if(command.lower() == "jarvis"):
-                speak("Wake word detected.")
+                speak("Yes?")
+
                 
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
                 # time.sleep(0.5)
-                
+
                 speak("On your service sir!")
-               
+
                 with sr.Microphone(device_index=0) as source:
                     print("Jarvis Activated!")
                     r.adjust_for_ambient_noise(source, duration=0.5)
