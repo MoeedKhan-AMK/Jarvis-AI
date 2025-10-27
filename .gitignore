@@ -2,6 +2,10 @@
 .env
 *.env
 *.key
+
+seerah_library.py
+quran_library.py
+
 apikey.txt
 secret.txt
 text.mp3

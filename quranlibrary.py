@@ -1,5 +1,5 @@
-book = {
-    "one" : "https://youtu.be/so-QHLIy2V0",
+quran_surah = {
+    "Surah Fatiha" : "https://youtu.be/QH8a1ridcB8",
     "two" : "https://youtu.be/ttTGple9mxQ",
     "three" : "https://youtu.be/T_aopS_-sAs",
     "four" : "https://youtu.be/2qFGReWoA7I",

@@ -65,6 +65,19 @@ def process_command(c):     #function to process user commands
     #     biography = c.lower().split("")[1]
     #     link = seerah_library.biography[biography]
     #     webbrowser.open(link)
+    elif "play surah" in c.lower():
+        surah_name = c.lower().replace("play surah", "").strip()
+        if surah_name in quranlibrary.quran_surah:
+            webbrowser.open(quranlibrary.quran_surah[surah_name])
+            speak(f"Playing {surah_name}")
+            
+    elif "tell me about" in c.lower():
+        topic = c.lower().replace("tell me about", "").strip()
+        if topic in seerah_library.seerah_biography:
+            webbrowser.open(seerah_library.seerah_biography[topic])
+            speak(f"Opening information about {topic}")
+
+
     
     #News fetching command
     elif "news" in c.lower():
@@ -96,23 +109,21 @@ if __name__ == "__main__":
         #USE THE APPROPRIATE MICROPHONE DEVICE INDEX
         try:
             with sr.Microphone(device_index=0) as source:
-                speak("Say 'Jarvis'")
-                r.adjust_for_ambient_noise(source, duration=0.5)
+                speak("Say Jarvis to wake me up.")
+                r.adjust_for_ambient_noise(source)
                 audio = r.listen(source)
                 command = r.recognize_google(audio)
             
             if(command.lower() == "jarvis"):
-                speak("Yes?")
+                speak("Yes? How can I help you?")
 
                 
                 #CLOSE MICROPHONE STREAM BEFORE SPEAKING
                 # time.sleep(0.5)
 
-                speak("On your service sir!")
-
                 with sr.Microphone(device_index=0) as source:
-                    print("Jarvis Activated!")
-                    r.adjust_for_ambient_noise(source, duration=0.5)
+                    # print("Jarvis Activated!")
+                    r.adjust_for_ambient_noise(source)
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
                 

@@ -1,11 +1,11 @@
-biography = {
+seerah_biography = {
     "one": "https://youtu.be/eTUwcgiGY08",
-    "two" : "https://youtu.be/6enKNJM-2bo",
-    "three" : "https://youtu.be/FY23yHBMlCI",
-    "four" : "https://youtu.be/7HshKMNAOIw",
-    "five" : "https://youtu.be/2_EmGyrMLVo",
-    "six" : "https://youtu.be/RAGCCay4BHg",
-    "seven" : "https://youtu.be/AUfNifapIW4",
+    "Why Arab" : "https://youtu.be/6enKNJM-2bo",
+    "Arab Before Prophet" : "https://youtu.be/FY23yHBMlCI",
+    "Birth of Prophet" : "https://youtu.be/7HshKMNAOIw",
+    "Childhood of Prophet " : "https://youtu.be/2_EmGyrMLVo",
+    "Youth of Prophet" : "https://youtu.be/RAGCCay4BHg",
+    "Before Prophethood" : "https://youtu.be/AUfNifapIW4",
     "eight" : "https://youtu.be/jus8ijlT_Uc",
     "nine" : "https://youtu.be/eFCGmgFWxGw",
     "ten" : "https://youtu.be/7fkhwEJ0Ueg",
