@@ -40,19 +40,19 @@ def process_command(c):     #function to process user commands
     #Opening websites commands
     if "open google" in c.lower():
         webbrowser.open("https://www.google.com")
-        print("Opening Google in your browser...")
+        speak("Opening Google in your browser...")
     elif "open youtube" in c.lower():
         webbrowser.open("https://www.youtube.com")
-        print("Opening YouTube in your browser...")
+        speak("Opening YouTube in your browser...")
     elif "open x" in c.lower():
         webbrowser.open("https://x.com")
-        print("Opening X in your browser...")
+        speak("Opening X in your browser...")
     elif "open linkedin" in c.lower():
         webbrowser.open("https://www.linkedin.com")
-        print("Opening LinkedIn in your browser...")
+        speak("Opening LinkedIn in your browser...")
     elif "open github" in c.lower():
         webbrowser.open("https://github.com")
-        print("Opening GitHub in your browser...")
+        speak("Opening GitHub in your browser...")
         
         # Quran recitation commands ON HOLD
     # elif "play part" in c.lower():
@@ -78,10 +78,11 @@ def process_command(c):     #function to process user commands
     else:
         #let LLM API handle commands
         response = ask_Jarvis(c)
-        print("User: ", command)
-        print(f"Jarvis: {response}")
-        
-        
+        print("User: " + command)
+        speak(command)
+        speak("Jarvis: " + response)
+
+
 # Main program loop
 if __name__ == "__main__":
     speak("Jarvis is initializing...")
