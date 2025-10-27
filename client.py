@@ -1,26 +1,15 @@
-from openai import OpenAI
+from google import genai
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
-client = OpenAI(
-    api_key = os.getenv("OPENAI_API_KEY"),
+
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+
+response = client.models.generate_content(
+    model="gemini-2.5-flash", 
+    contents="Explain how AI works in a few words"
 )
 
-response = client.responses.create(
-    model="gpt-4o",
-    input="what is dynamic programming?"
-)
-
-response = client.chat.completions.create(
-    model="gpt-4o",
-    messages=[
-        {"role": "system", "content": "You are a assistant called Jarvis skilled like Grok, claude, and ChatGPT."},
-        {"role": "user", "content": "Explain the theory of relativity in simple terms."}
-    ]
-)
-    
-print(response.output_text)
-print(response.choices[0].message.content)
-
+print(response.text)
 
