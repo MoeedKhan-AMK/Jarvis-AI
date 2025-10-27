@@ -79,8 +79,8 @@ def process_command(c):     #function to process user commands
         #let LLM API handle commands
         response = ask_Jarvis(c)
         print("User: " + command)
-        speak(command)
-        speak("Jarvis: " + response)
+        print("Jarvis: " + response)
+        speak(response)
 
 
 # Main program loop
