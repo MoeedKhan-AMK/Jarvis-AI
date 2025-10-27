@@ -56,7 +56,7 @@ def process_command(c):     #function to process user commands
             speak(headline['title'])
             
     else:
-        #let OpenAI handle commands
+        #let LLM API handle commands
         pass
         
 # Main program loop
