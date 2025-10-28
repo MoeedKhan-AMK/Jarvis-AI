@@ -1,3 +1,3 @@
 fqblibrary = {
-    "furqan qureshi blogs" : "https://www.youtube.com/@FurqanQureshiBlogs"
+    "furqan qureshi" : "https://www.youtube.com/@FurqanQureshiBlogs"
 }
