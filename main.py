@@ -10,10 +10,16 @@ import requests           #to make API requests
 
 from client import ask_Jarvis   #importing ask_Jarvis function from client.py
 import quranlibrary          #importing quran library
+from dotenv import load_dotenv
+import os
+import requests
+
+# Load environment variables
+load_dotenv()
+news_api_key = os.getenv("NEWS_API_KEY")
 
 recognizer = sr.Recognizer()
 # engine = pyttsx3.init()
-new_api_key = "5ff34f7b2d9d4baab5584c46370d2676"        #News API key
 
 # def speak(text):        #function to make the assistant speak
 #     engine.say(text)
@@ -60,12 +66,12 @@ def process_command(c):     #function to process user commands
     
     #News fetching command
     elif "news" in c.lower():
-        responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&&apiKey={new_api_key}")  #category can be added using category=sports
+        responses = requests.get(f"https://newsapi.org/v2/top-headlines?country=us&&apiKey={news_api_key}")  #category can be added using category=sports
         speak("Fetching the latest headlines...")
 
-        for i, headline in enumerate(responses.json().get("articles"), start=1):  # First 10 news only
-            print(f"{i}. {headline['title']}")
-            speak(headline['title'])
+        for i, article in enumerate(responses.json().get("articles"), start=1):  # First 10 news only
+            print(f"{i}. {article['title']}")
+            speak(article['title'])
             
     else:
         #let LLM API handle commands
@@ -103,8 +109,8 @@ if __name__ == "__main__":
                     r.adjust_for_ambient_noise(source)
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
-                    
                     process_command(command)
+                    
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         # except sr.RequestError as e:
