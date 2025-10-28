@@ -1,3 +1,4 @@
+from gettext import translation
 import os
 import speech_recognition as sr     #speech recognition library
 import webbrowser           #to open web browser    
@@ -9,7 +10,7 @@ import requests           #to make API requests
 
 from client import ask_Jarvis   #importing ask_Jarvis function from client.py
 import quranlibrary          #importing quran library
-import seerah_library       #importing seerah library
+import FQBlibrary       #importing seerah library
 
 recognizer = sr.Recognizer()
 # engine = pyttsx3.init()
@@ -54,30 +55,13 @@ def process_command(c):     #function to process user commands
         webbrowser.open("https://github.com")
         speak("Opening GitHub in your browser...")
         
-        # Quran recitation commands ON HOLD
-    # elif "play part" in c.lower():
-    #     juz = "juz 1"  # Default juz
-    #     if juz in quranlibrary.part:
-    #         webbrowser.open(quranlibrary.part[juz])
-    #         print(f"Playing {juz}...")
-        # Seeerah biography commands ON HOLD
-    # elif c.lower().startswith("play"):
-    #     biography = c.lower().split("")[1]
-    #     link = seerah_library.biography[biography]
-    #     webbrowser.open(link)
-    elif "play surah" in c.lower():
-        surah_name = c.lower().replace("play surah", "").strip()
-        if surah_name in quranlibrary.quran_surah:
-            webbrowser.open(quranlibrary.quran_surah[surah_name])
-            speak(f"Playing {surah_name}")
-            
-    elif "tell me about" in c.lower():
-        topic = c.lower().replace("tell me about", "").strip()
-        if topic in seerah_library.seerah_biography:
-            webbrowser.open(seerah_library.seerah_biography[topic])
-            speak(f"Opening information about {topic}")
-
-
+    elif "play quran translation" in c.lower():
+        webbrowser.open(quranlibrary.translations["translations"])
+        speak("Playing Quran translation videos")
+        
+    elif "play furqan qureshi blogs" in c.lower():
+        webbrowser.open(FQBlibrary.fqblibrary["furqan qureshi blogs"])
+        speak("Playing Furqan Qureshi Blogs")
     
     #News fetching command
     elif "news" in c.lower():
@@ -109,7 +93,7 @@ if __name__ == "__main__":
         #USE THE APPROPRIATE MICROPHONE DEVICE INDEX
         try:
             with sr.Microphone(device_index=0) as source:
-                speak("Say Jarvis to wake me up.")
+                speak("Say Jarvis!")
                 r.adjust_for_ambient_noise(source)
                 audio = r.listen(source)
                 command = r.recognize_google(audio)
