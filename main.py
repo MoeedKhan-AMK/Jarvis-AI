@@ -10,7 +10,6 @@ import requests           #to make API requests
 
 from client import ask_Jarvis   #importing ask_Jarvis function from client.py
 import quranlibrary          #importing quran library
-import FQBlibrary       #importing seerah library
 
 recognizer = sr.Recognizer()
 # engine = pyttsx3.init()
@@ -57,11 +56,7 @@ def process_command(c):     #function to process user commands
         
     elif "play quran translation" in c.lower():
         webbrowser.open(quranlibrary.translations["translations"])
-        speak("Playing Quran translation videos")
-        
-    elif "play furqan qureshi blogs" in c.lower():
-        webbrowser.open(FQBlibrary.fqblibrary["furqan qureshi blogs"])
-        speak("Playing Furqan Qureshi Blogs")
+        speak("Opening Quran translation videos")
     
     #News fetching command
     elif "news" in c.lower():
@@ -82,8 +77,6 @@ def process_command(c):     #function to process user commands
 
 # Main program loop
 if __name__ == "__main__":
-    speak("Jarvis is initializing...")
-
     while True:
         #Listen for wake word "Jarvis"
         r = sr.Recognizer()
@@ -110,8 +103,8 @@ if __name__ == "__main__":
                     r.adjust_for_ambient_noise(source)
                     audio = r.listen(source)
                     command = r.recognize_google(audio)
-                
-                process_command(command)
+                    
+                    process_command(command)
         except sr.UnknownValueError:
             print("Google Speech Recognition could not understand audio")
         # except sr.RequestError as e:
